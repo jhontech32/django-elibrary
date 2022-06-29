@@ -1,0 +1,23 @@
+{% extends "Layouts/Base.html" %}
+{% load crispy_forms_tags %}
+
+{% block header %}
+<title>
+    Daftar User | Projectku 2022
+</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <br />
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        {{ form.name | as_crispy_field }}
+        {{ form.phone | as_crispy_field }}
+        {{ form.email | as_crispy_field }}
+        <button type="submit" class="btn btn-success mt-4">
+            <i class="fa fa-save"></i> Add User
+        </button>
+    </form>
+</div>
+{% endblock %}

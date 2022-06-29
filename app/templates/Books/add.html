@@ -1,0 +1,20 @@
+{% extends "Layouts/Base.html" %}
+{% load crispy_forms_tags %}
+
+{% block header %}
+<title>Tambah Book | Projectku 2022</title>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        {{ form.title | as_crispy_field }}
+        {{ form.description | as_crispy_field }}
+        {{ form.author | as_crispy_field }}
+        <button type="submit" class="btn btn-success mt-4">
+            <i class="fa fa-save"></i> Add New
+        </button>
+    </form>
+</div>
+{% endblock %}

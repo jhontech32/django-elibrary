@@ -1,0 +1,33 @@
+{% extends "Layouts/Base.html" %}
+
+{% block header %}
+<title>
+    Detail User | Projectku 2022
+</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <br />
+        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80"
+             class="img-thumbnail rounded"
+             width="200"
+             height="200"
+             alt="Card image cap"
+        >
+    <br />
+    <br />
+        <div class="mt-50">
+            <h5>{{ user.name }}</h5>
+            <p>{{ user.phone }}</p>
+            <p>{{ user.email }}</p>
+            <div>
+                <a href="{% url 'user' %}">
+                    <button class="btn btn-primary">
+                        Back
+                    </button>
+                </a>
+            </div>
+        </div>
+</div>
+{% endblock %}

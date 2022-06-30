@@ -4,9 +4,10 @@ from .models import TblBook
 class BookForm(ModelForm):
     class Meta:
         model = TblBook
-        fields = '__all__'
+        fields = ('title', 'description', 'author', 'picture')
         labels = {
             'title': 'Title',
             'description': 'Description',
-            'author': 'Author'
+            'author': 'Author',
+            'picture': 'Picture'
         }

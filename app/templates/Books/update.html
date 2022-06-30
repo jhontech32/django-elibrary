@@ -1,5 +1,6 @@
 {% extends "Layouts/Base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block header %}
 <title>Tambah Buku | Projectku 2022</title>
@@ -7,13 +8,20 @@
 
 {% block content %}
 <div class="container mt-4">
+    {% if book.picture %}
+        <img src="{{ MEDIA_URL }}{{ book.picture }}" width="300px" class="img-thumbnail rounded">
+    {% else %}
+        <img src="{% static 'assets/no-image.jpeg' %}" width="300px" class="img-thumbnail rounded">
+    {% endif %}
+    <br /> <br />
     <form method="POST" novalidate>
         {% csrf_token %}
+        {{ form.picture | as_crispy_field }}
         {{ form.title | as_crispy_field }}
         {{ form.description | as_crispy_field }}
         {{ form.author | as_crispy_field }}
         <button type="submit" class="btn btn-success mt-4">
-            <i class="fa fa-save"></i> Add New
+            <i class="fa fa-save"></i> Update Book
         </button>
     </form>
 </div>

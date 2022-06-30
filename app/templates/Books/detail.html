@@ -1,5 +1,5 @@
 {% extends "Layouts/Base.html" %}
-
+{% load static %}
 {% block header %}
 <title>
     {{ book.title }} | Projectku 2022
@@ -9,6 +9,12 @@
 {% block content %}
 <div class="container my-100">
     <br />
+    {% if book.picture %}
+        <img src="{{ MEDIA_URL }}{{ book.picture }}" width="400px" class="img-thumbnail rounded">
+    {% else %}
+        <img src="{% static 'assets/no-image.jpeg' %}" width="300px" class="img-thumbnail rounded">
+    {% endif %}
+    <br /> <br />
     <h3>{{ book.title }}</h3>
     <p>{{ book.description }}</p>
     <p>Author: {{ book.author }}</p>

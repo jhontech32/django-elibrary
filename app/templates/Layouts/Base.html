@@ -1,9 +1,7 @@
 {% load static %}
-
 <html>
     {% block header %}
     {% endblock %}
-
     <!-- CSS 1 -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <!-- CSS BOOTSTRAP -->
@@ -14,10 +12,8 @@
     <body>
         {% include "Layouts/Navbar.html" %}
         <div class="container container-fluid">
-
             {% block content %}
             {% endblock %}
-
             {% include "Layouts/Footer.html" %}
         </div>
         <script src="{% static 'vendor/bootstrap/js/bootstrap.js' %}" type="text/java script"></script>

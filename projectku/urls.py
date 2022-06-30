@@ -16,8 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# ADD THIS
+# from django.conf import settings
+from django.conf.urls.static import static
+from . import settings
+
 urlpatterns = [
+    # ADMIN PATH
     path('admin/', admin.site.urls),
+    # MENU PATH
     path('', include('app.home.urls')),
     path('about', include('app.about.urls')),
     # BOOK PATH
@@ -26,4 +33,10 @@ urlpatterns = [
     path('user/', include('app.users.urls')),
     # TRANSACTION PATH
     path('transaction/', include('app.transactions.urls'))
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# ADD THIS
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

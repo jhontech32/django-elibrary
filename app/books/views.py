@@ -23,36 +23,35 @@ def detail(request, book_id):
 
 # ADD FUNCTION
 def add(request):
-    form = BookForm(request.POST)
+    form = BookForm(request.POST, request.FILES)
     if request.method == 'POST':
         if form.is_valid():
             form.save()
+            # Get the current instance object to display in the template
+            messages.success(request, "Success add data !")
             return redirect('/book')
         else:
             form = BookForm()
-
     return render(request, "Books/add.html", {'form': form})
 
 # UPDATE FUNCTION
 def update(request, book_id):
     # wajib initialize lebih dahulu
     # form = BookForm()
-
     try:
         book = TblBook.objects.get(pk=book_id)
     except TblBook.DoesNotExist:
         raise Http404('Data not found!')
-
     # pengecekan action
     if request.method == 'POST':
-        form = BookForm(request.POST, instance=book)
+        form = BookForm(request.POST, request.FILES, instance=book)
         if form.is_valid():
             form.save()
             messages.success(request, "Success update data !")
             return redirect('/book')
     else:
         form = BookForm(instance=book)
-    return render(request, "Books/update.html", {'form': form})
+    return render(request, "Books/update.html", {'form': form, 'book': book})
 
 # DELETE FUNCTION
 def delete(request, book_id):

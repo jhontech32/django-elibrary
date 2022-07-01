@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import Http404
 from django.contrib import messages
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 
 from .models import TblBook
 from .forms import BookForm
+
+import os
 
 # Create your views here.
 def index(request):
@@ -36,21 +40,12 @@ def add(request):
 
 # UPDATE FUNCTION
 def update(request, book_id):
-    # wajib initialize lebih dahulu
-    # form = BookForm()
-    try:
-        book = TblBook.objects.get(pk=book_id)
-    except TblBook.DoesNotExist:
-        raise Http404('Data not found!')
-    # pengecekan action
-    if request.method == 'POST':
-        form = BookForm(request.POST, request.FILES, instance=book)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Success update data !")
-            return redirect('/book')
-    else:
-        form = BookForm(instance=book)
+    book = TblBook.objects.get(id=book_id)
+    form = BookForm(request.POST, request.FILES, instance=book)
+    if form.is_valid():
+        form.save()
+        return redirect('/book')
+    form = BookForm(instance=book)
     return render(request, "Books/update.html", {'form': form, 'book': book})
 
 # DELETE FUNCTION

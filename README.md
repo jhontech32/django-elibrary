@@ -7,4 +7,5 @@ This is repository for my basic education about python django, feel free for lea
 - CRUD
 - Templating
 - DB Connection (PostgreSQL)
-- Upload Photo ( On Progress )
+- Upload Photo
+- Update Photo

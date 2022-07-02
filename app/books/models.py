@@ -21,8 +21,12 @@ class TblBook(models.Model):
 
     # Image processing function
     def save(self):
+        #self is model name ex: TblBook
         # Membuka image dari formdata
         im = Image.open(self.picture)
+
+        print('ISI DARI IM', im)
+        print('ISI DARI SelfPic', self.picture)
 
         # Uncomment for resize image uploaded
         # basewidth = 200
@@ -37,6 +41,7 @@ class TblBook(models.Model):
             return super(TblBook, self).save()
         else:
             # Convert gambar sesuai dengan mode
+
             output = BytesIO()
             if im.mode == "JPEG":
                 im.save(fp=output, format='JPEG', quality=95)

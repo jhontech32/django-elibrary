@@ -14,7 +14,7 @@
         <img src="{% static 'assets/no-image.jpeg' %}" width="300px" class="img-thumbnail rounded">
     {% endif %}
     <br /> <br />
-    <form method="POST" novalidate>
+    <form method="POST" enctype="multipart/form-data" novalidate>
         {% csrf_token %}
         {{ form.picture | as_crispy_field }}
         {{ form.title | as_crispy_field }}

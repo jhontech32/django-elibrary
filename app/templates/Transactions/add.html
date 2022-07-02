@@ -11,7 +11,16 @@
     <form method="POST" novalidate>
         {% csrf_token %}
         {{ form.name | as_crispy_field }}
-        {{ form.book | as_crispy_field }}
+<!--        {{ form.book | as_crispy_field }}-->
+        <div class="dropdown mb-3">
+            <label class="requiredField">Books*</label>
+            <select name="books" class="form-control" id="id_book">
+                <option value="">-- Select Books --</option>
+                {% for row in books %}
+                    <option value="{{ row.id }}">{{ row.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
         {{ form.startDate | as_crispy_field }}
         {{ form.endDate | as_crispy_field }}
         <button type="submit" class="btn btn-success mt-4">

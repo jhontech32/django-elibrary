@@ -3,11 +3,15 @@
     {% block header %}
     {% endblock %}
     <!-- CSS 1 -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'custom/css/styles.css' %}">
     <!-- CSS BOOTSTRAP -->
     <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.css' %}">
     <!-- Add icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Add datatable -->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/DataTable/css/datatable.css' %}">
+    <!-- ADD AJAX SELECT2 -->
+    <link href="{% static 'vendor/Select2/css/selector2.css' %}" rel="stylesheet" />
 
     <body>
         {% include "Layouts/Navbar.html" %}
@@ -16,6 +20,10 @@
             {% endblock %}
             {% include "Layouts/Footer.html" %}
         </div>
+        <script src="{% static 'vendor/Jquery/jquery.js' %}"></script>
         <script src="{% static 'vendor/bootstrap/js/bootstrap.js' %}" type="text/java script"></script>
+        <script type="text/javascript" charset="utf8" src="{% static 'vendor/DataTable/js/datatable.js' %}"></script>
+        <script src="{% static 'vendor/Select2/js/select2.js' %}"></script>
+        <script type="text/javascript" src="{% static 'custom/js/scripts.js' %}"></script>
     </body>
 </html>

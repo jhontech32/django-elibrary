@@ -1,15 +1,12 @@
-{% extends "Layouts/Base.html" %}
+{% extends "Adminlte/Base/index.html" %}
 {% load static %}
 
-{% block header %}
+{% block title %}
 <title>Books | Projectku 2022</title>
 {% endblock %}
 
-
-
 {% block content %}
 <div class="container">
-    <br />
     {% include "Messages/index.html" %}
     <a href="{% url 'addBook' %}">
         <button class="btn btn-success my-3">

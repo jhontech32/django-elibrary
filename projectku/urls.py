@@ -19,11 +19,14 @@ from django.urls import path, include
 # ADD THIS
 # from django.conf import settings
 from django.conf.urls.static import static
+
 from . import settings
 
 urlpatterns = [
     # ADMIN PATH
     path('admin/', admin.site.urls),
+    # LOGIN PATH
+    path('login/', include('app.login.urls')), # for login
     # MENU PATH
     path('', include('app.home.urls')),
     path('about', include('app.about.urls')),
@@ -32,7 +35,10 @@ urlpatterns = [
     # USER PATH
     path('user/', include('app.users.urls')),
     # TRANSACTION PATH
-    path('transaction/', include('app.transactions.urls'))
+    path('transaction/', include('app.transactions.urls')),
+    # SETTINGS
+    path('settings', include('app.menus.urls'))
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # ADD THIS
